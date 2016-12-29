@@ -1,0 +1,23 @@
+body {
+  background: $dark-primary-color;
+  color: $texticon-color;
+  font-family: $font-stack;
+  font-size: 16px;
+}
+
+.full-wrapper {
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.pure-g {
+
+  > div {
+  border: 1px solid $accent-color;
+  box-sizing: border-box;
+  text-align: center;
+  }
+
+}

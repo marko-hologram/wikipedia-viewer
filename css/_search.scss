@@ -1,0 +1,25 @@
+.search-input {
+  margin: 3em auto;
+  padding: 2em;
+
+  a {
+    color: $texticon-color;
+    text-decoration: none;
+    opacity: .8;
+    transition: opacity .4s;
+
+    &:hover {
+      opacity: 1;
+      transition: opacity .4s;
+    }
+  }
+}
+
+.pure-form {
+
+  .pure-input {
+    color: $primary-color;
+    border-radius: 5px;
+    min-width: 300px;
+  }
+}
