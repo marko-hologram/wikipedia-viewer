@@ -47,12 +47,12 @@ $(document).ready(function() {
   function wikiQuery(data) {
     var articleHTML = '<ul class=article-list pure-u-1">';
 
-    $.each(data, function(i, article) {
+    $.each(data.query, function(i, article) {
       articleHTML += '<li>';
       articleHTML += '<a target="_blank" href="';
-      articleHTML += article.pages;
+      articleHTML += 'http://wikipedia.org';
       articleHTML += '">';
-      articleHTML += article[Object.keys];
+      articleHTML += article;
       articleHTML += '<img src="';
       articleHTML += article.media;
       articleHTML += '">';
