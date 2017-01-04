@@ -2,11 +2,11 @@ $(document).ready(function() {
 
 //https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions%7Cimages%7Cextracts%7Cinfo&titles=san+francisco&redirects=1&rvprop=content&rvlimit=1&imlimit=1&exsentences=1&inprop=url
 // query::: /w/api.php?action=query&format=json&prop=images%7Cextracts&titles=San+Francisco&redirects=1&imlimit=10&exsentences=1
-  var searchQuery;
+
   var wikiAPI = "https://en.wikipedia.org/w/api.php?";
   var wikiOptions = {
     action: "query",
-    titles: searchQuery,
+    titles: "",
     prop: "images|revisions|extracts|info",
     redirects: 1,
     rvprop: "content",
@@ -23,8 +23,9 @@ $(document).ready(function() {
 
     // Enter key press
     if (e.which == 13) {
-      searchQuery = $("#search-input").val();
-      $("#search-output").text(searchQuery);
+      wikiOptions.titles = $("#search-input").val();
+      $("#search-output").text(wikiOptions.titles); // show search text
+
       // JSON call
       $.getJSON(wikiAPI, wikiOptions, wikiQuery);
       return false;
@@ -34,8 +35,8 @@ $(document).ready(function() {
 
   // Search button press
   $("#search-button").on("click", function () {
-    searchQuery = $("#search-input").val();
-    $("#search-output").text(searchQuery);
+    wikiOptions.titles = $("#search-input").val();
+    $("#search-output").text(wikiOptions.titles); // show search text
 
     // JSON call
     $.getJSON(wikiAPI, wikiOptions, wikiQuery);
