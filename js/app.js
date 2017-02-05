@@ -6,16 +6,20 @@ $(document).ready(function() {
   var wikiAPI = "https://en.wikipedia.org/w/api.php?";
   var wikiOptions = {
     action: "query",
+    format: "json",
+    origin: "*",
+    prop: "images|revisions|extracts|info|imageinfo",
     titles: "",
-    prop: "images|revisions|extracts|info",
     redirects: 1,
     rvprop: "content",
     rvlimit: 1,
-    imlimit: 1,
     exsentences: 1,
+    imlimit: 1,
     inprop: "url",
-    origin: "*",
-    format: "json"
+    iiprop: "url",
+    iilimit: 1,
+    iiurlwidth: 150,
+    iiurlheight: 150
   }
 
   // Search box input
@@ -47,15 +51,17 @@ $(document).ready(function() {
   function wikiQuery(data) {
     var articleHTML = '<ul class=article-list pure-u-1">';
 
-    $.each(data.query, function(i, article) {
+    $.each(data.query.pages, function(i, article) {
       articleHTML += '<li>';
       articleHTML += '<a target="_blank" href="';
-      articleHTML += 'http://wikipedia.org';
+      articleHTML += article.fullurl;
       articleHTML += '">';
-      articleHTML += article;
+      articleHTML += article.title + " " + article.pageid;
       articleHTML += '<img src="';
       articleHTML += article.media;
       articleHTML += '">';
+      articleHTML += article.extract;
+      articleHTML += '</a>';
     });
 
     articleHTML += '</ul>';
