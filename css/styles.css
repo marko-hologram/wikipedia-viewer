@@ -13,6 +13,14 @@ body {
   box-sizing: border-box;
   text-align: center; }
 
+.clearfix::after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
 .search-input {
   margin: 3em auto;
   padding: 2em; }
@@ -29,3 +37,16 @@ body {
   color: #3f51b5;
   border-radius: 5px;
   min-width: 300px; }
+
+#search-output li {
+  list-style-type: none;
+  background-color: #3f51b5;
+  padding: 10px 20px; }
+  #search-output li h2 {
+    float: right; }
+  #search-output li p {
+    font-size: 18px;
+    float: right;
+    width: 70%; }
+  #search-output li img {
+    float: left; }
