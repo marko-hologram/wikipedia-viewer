@@ -9,17 +9,16 @@ $(document).ready(function() {
     format: "json",
     origin: "*",
     prop: "info|extracts",
-    generator: "search",
-    //redirects: 1,
-    inprop: "url",
     exsentences: 1,
     exlimit: 1,
-    aplimit: 10,
-    gapfrom: "",
-    gaplimit: 5,
-    gapnamespace: 0,
+    generator: "search",
+    inprop: "url",
     gsrsearch: "",
-    gsrlimit: 10
+    gsrnamespace: 0,
+    gsrlimit: 5,
+    gsrprop: "snippet|sectionsnippet",
+    exintro: 1,
+    exlimit: 10
   }
 
   // Search box input
