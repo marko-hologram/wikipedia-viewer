@@ -23,28 +23,3 @@
     min-width: 300px;
   }
 }
-
-#search-output {
-
-  li {
-    list-style-type: none;
-    background-color: $primary-color;
-    padding: 10px 20px;
-
-    h2 {
-      float: right;
-    }
-
-    p {
-      font-size: 18px;
-      float: right;
-      width: 70%;
-    }
-
-    img {
-      float: left;
-    }
-  }
-
-  
-}

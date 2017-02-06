@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: $dark-primary-color;
   color: $texticon-color;
@@ -29,5 +33,5 @@ body {
   content: " ";
   clear: both;
   height: 0;
-  
+
 }
