@@ -16,9 +16,8 @@ $(document).ready(function() {
     gsrsearch: "",
     gsrnamespace: 0,
     gsrlimit: 5,
-    gsrprop: "snippet|sectionsnippet",
     exintro: 1,
-    exlimit: 10
+    exlimit: 5
   }
 
   // Search box input
