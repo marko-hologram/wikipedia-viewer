@@ -48,9 +48,11 @@ body {
     display: block; }
   #search-output ul {
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    width: 100%; }
   #search-output li {
-    border-left: 5px solid transparent;
+    border-left: 5px solid #bdbdbd;
+    border-radius: 2px;
     list-style-type: none;
     background-color: #3f51b5;
     padding: 20px 10px;
@@ -61,7 +63,7 @@ body {
       transition: all .4s; }
     #search-output li img {
       width: 200px;
-      max-height: 200px; }
+      height: 150px; }
     #search-output li h2 {
       margin-top: 0;
       font-size: 28px; }
@@ -69,4 +71,4 @@ body {
       font-size: 14px;
       width: 100%; }
     #search-output li .output-text {
-      padding: 0 10px; }
+      padding: 0 20px; }

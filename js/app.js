@@ -8,13 +8,18 @@ $(document).ready(function() {
     action: "query",
     format: "json",
     origin: "*",
-    prop: "info|extracts|images",
-    titles: "",
+    prop: "info|extracts",
+    generator: "search",
+    //redirects: 1,
     inprop: "url",
     exsentences: 1,
     exlimit: 1,
-    imlimit: 1,
-    redirects: 1
+    aplimit: 10,
+    gapfrom: "",
+    gaplimit: 5,
+    gapnamespace: 0,
+    gsrsearch: "",
+    gsrlimit: 10
   }
 
   // Search box input
@@ -22,8 +27,8 @@ $(document).ready(function() {
 
     // Enter key press
     if (e.which == 13) {
-      wikiOptions.titles = $("#search-input").val();
-      $("#search-output").text(wikiOptions.titles); // show search text
+      wikiOptions.gsrsearch = $("#search-input").val();
+      $("#search-output").text(wikiOptions.gsrsearch); // show search text
 
       // JSON call
       $.getJSON(wikiAPI, wikiOptions, wikiQuery);
@@ -34,8 +39,8 @@ $(document).ready(function() {
 
   // Search button press
   $("#search-button").on("click", function () {
-    wikiOptions.titles = $("#search-input").val();
-    $("#search-output").text(wikiOptions.titles); // show search text
+    wikiOptions.gsrsearch = $("#search-input").val();
+    $("#search-output").text(wikiOptions.gsrsearch); // show search text
 
     // JSON call
     $.getJSON(wikiAPI, wikiOptions, wikiQuery);
@@ -47,14 +52,14 @@ $(document).ready(function() {
     var articleHTML = '<ul class=article-list pure-u-1">';
 
     $.each(data.query.pages, function(i, article) {
-      articleHTML += '<li class="clearfix">';
+      articleHTML += '<li class="clearfix pure-u-1">';
       articleHTML += '<a target="_blank" href="';
       articleHTML += article.fullurl;
       articleHTML += '">';
-      articleHTML += '<img class="pure-u-2-5" src="';
+      //articleHTML += '<img class="pure-u-2-5" src="https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/18611/SITours/zagreb-small-group-private-walking-tour-in-zagreb-263763.jpg';
       // articleHTML += article.thumbnail.source;
-      articleHTML += '">';
-      articleHTML += '<div class="output-text pure-u-3-5">';
+      //articleHTML += '">';
+      articleHTML += '<div class="output-text pure-u-lg-1">';
       articleHTML += '<h2>'
       articleHTML += article.title;
       articleHTML += '</h2>'
