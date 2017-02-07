@@ -1,15 +1,12 @@
 $(document).ready(function() {
 
-//https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions%7Cimages%7Cextracts%7Cinfo&titles=san+francisco&redirects=1&rvprop=content&rvlimit=1&imlimit=1&exsentences=1&inprop=url
-// query::: /w/api.php?action=query&format=json&prop=images%7Cextracts&titles=San+Francisco&redirects=1&imlimit=10&exsentences=1
-
   var wikiAPI = "https://en.wikipedia.org/w/api.php?";
   var wikiOptions = {
     action: "query",
     format: "json",
     origin: "*",
     prop: "info|extracts",
-    exsentences: 1,
+    exsentences: 2,
     exlimit: 1,
     generator: "search",
     inprop: "url",
@@ -26,7 +23,7 @@ $(document).ready(function() {
     // Enter key press
     if (e.which == 13) {
       wikiOptions.gsrsearch = $("#search-input").val();
-      $("#search-output").text(wikiOptions.gsrsearch); // show search text
+      //$("#search-output").text(wikiOptions.gsrsearch); // show search text
 
       // JSON call
       $.getJSON(wikiAPI, wikiOptions, wikiQuery);
@@ -38,7 +35,7 @@ $(document).ready(function() {
   // Search button press
   $("#search-button").on("click", function () {
     wikiOptions.gsrsearch = $("#search-input").val();
-    $("#search-output").text(wikiOptions.gsrsearch); // show search text
+    //$("#search-output").text(wikiOptions.gsrsearch); // show search text
 
     // JSON call
     $.getJSON(wikiAPI, wikiOptions, wikiQuery);
@@ -54,9 +51,6 @@ $(document).ready(function() {
       articleHTML += '<a target="_blank" href="';
       articleHTML += article.fullurl;
       articleHTML += '">';
-      //articleHTML += '<img class="pure-u-2-5" src="https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/18611/SITours/zagreb-small-group-private-walking-tour-in-zagreb-263763.jpg';
-      // articleHTML += article.thumbnail.source;
-      //articleHTML += '">';
       articleHTML += '<div class="output-text pure-u-lg-1">';
       articleHTML += '<h2>'
       articleHTML += article.title;
@@ -67,8 +61,32 @@ $(document).ready(function() {
     });
 
     articleHTML += '</ul>';
-    $('#search-output').html(articleHTML);
+    $('#search-output').css( "opacity", 1 );
+    $('#search-output').html(articleHTML).animate({
+      opacity: 1
+    }, 1000 );
+
+    $('.output-text p:last-child').append("...");
   }
 
+  // Add the loading animation
+  var $container = $('#loading-animation');
+
+  $(document).on({
+    ajaxStart: function() {
+      $container.addClass('loading')
+      $('.modal').animate( {
+        opacity: 1,
+        height: "+=100px"
+      }, 400 ) ;
+    },
+    ajaxStop: function() {
+      // $container.removeClass('loading');
+      $('.modal').delay(200).animate( {
+        opacity: 0,
+        height: 0
+      }, 400 );
+    }
+  });
 
 });
